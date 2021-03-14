@@ -2,25 +2,10 @@
 <odoo>
 
     <!-- Base board element -->
-    <template id="cards_board">
-        <t t-call="web.assets_common" />
-        <t t-call="web.assets_backend" />
-        <t t-call="web.assets_frontend" />
-
-        <!-- <t t-call="web.assets_frontend_minimal_js" /> -->
-        <t t-call="web.html_container">
-            <div id="cards-board" class="container" />
+    <template id="cards_board" name="Cards Board">
+        <t t-call="website.layout">
+            <div id="cards-board" class="container-fluid" />
         </t>
-
-
-
-
-
-        <!-- <t t-call="website.compiled_assets_wysiwyg" />
-        <t t-call="website.assets_editor" /> -->
-
-
-
     </template>
 
 </odoo>

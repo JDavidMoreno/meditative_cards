@@ -28,10 +28,11 @@ odoo.define('meditative_cards.card', function (require) {
         },
 
         _onClickCard: function (e) {
-            this.triggerUp('clickCard', {
-                id: e.target.dataset.cardId,
-                variant: this.variant
-            });
+            this.$el.find('img').css('visibility', 'initial');
+            // this.triggerUp('clickCard', {
+            //     id: e.target.dataset.cardId,
+            //     variant: this.variant
+            // });
         },
 
     });

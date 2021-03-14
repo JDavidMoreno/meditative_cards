@@ -6,12 +6,12 @@
     <t t-name="cards.Board">
         <t t-if="widget.isVerticalScreen">
             <div class="row justify-content-center">
-                <div class="col-12">
-                    <i class="fa fa-refresh shuffle-cards" alt="Shuffle all the cards again." />
-                    <div position="relative" className="cards-container">
+                <div class="col-3">
+                    <i id="shuffle-cards" class="fa fa-refresh" alt="Shuffle all the cards again." />
+                    <div position="relative" class="cards-container">
                         <!-- Cards go here inside -->
                     </div>
-                    <div position="relative" className="messages-container">
+                    <div position="relative" class="messages-container">
                         <!-- Messagea will be appended here -->
                     </div>
                 </div>
@@ -23,8 +23,16 @@
     </t>
 
     <!-- Single card element -->
-    <div t-name="cards.Card" t-att-class="'meditative-card' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" draggable="true" t-att-style="'transform: rotate(' + widget.rotation + 'deg);'">
+    <!-- <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" draggable="true" t-att-style="'transform: rotate(' + widget.rotation + 'deg);'">
         <img class="card-image" t-attf-src="{{ widget.url }}" alt="Meditative Card" />
+    </div> -->
+
+    <div t-name="cards.Card" class="card-wrapper">
+        <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" draggable="true" t-att-style="'transform: rotate(' + widget.rotation + 'deg);'">
+            <img class="card-image" style="visibility: hidden;" t-attf-src="{{ widget.url }}" alt="Meditative Card" />
+        </div>
     </div>
+
+
 
 </templates>
