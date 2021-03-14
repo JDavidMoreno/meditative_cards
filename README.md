@@ -17,7 +17,7 @@
   <table>
     <tr>
       <td>
-        <img alt="cards overview single" src="https://github.com/JDavidMoreno/meditative_cards/blob/main/.github/images/overview.giff" />
+        <img alt="cards overview single" src="https://github.com/JDavidMoreno/meditative_cards/blob/main/.github/images/overview.gif" />
       </td>
     </tr>
   </table>
