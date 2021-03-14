@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <template id="assets_frontend" name="meditative_cards" inherit_id="portal.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/meditative_cards/static/src/css/cards.css"/>
+            <script type="text/javascript" src="/meditative_cards/static/src/js/board.js"/>
+            <script type="text/javascript" src="/meditative_cards/static/src/js/card.js"/>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates id="meditative_cards_templates" xml:space="preserve">
+
+    <!-- Widget controlled board component -->
+    <t t-name="cards.Board">
+        <t t-if="widget.isVerticalScreen">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <i class="fa fa-refresh shuffle-cards" alt="Shuffle all the cards again." />
+                    <div position="relative" className="cards-container">
+                        <!-- Cards go here inside -->
+                    </div>
+                    <div position="relative" className="messages-container">
+                        <!-- Messagea will be appended here -->
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <p>Nothing for the moment</p>
+        </t>
+    </t>
+
+    <!-- Single card element -->
+    <div t-name="cards.Card" t-att-class="'meditative-card' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" draggable="true" t-att-style="'transform: rotate(' + widget.rotation + 'deg);'">
+        <img class="card-image" t-attf-src="{{ widget.url }}" alt="Meditative Card" />
+    </div>
+
+</templates>
