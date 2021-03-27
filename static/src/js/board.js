@@ -73,6 +73,7 @@ odoo.define('meditative_cards.board', function (require) {
         },
 
         _onClickShuffle: function (e) {
+            // TODO: Just change the inclination of the card (transition then should apply) and the number of the ward for every widget
             function suffle(arr) {
                 return arr.sort(() => (Math.random() - 0.5))
             }

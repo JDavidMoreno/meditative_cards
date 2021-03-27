@@ -7,7 +7,7 @@ odoo.define('meditative_cards.card', function (require) {
     var Card = Widget.extend({
         template: 'cards.Card',
         events: {
-            'click .meditative-card': '_onClickCard',
+            'dblclick .meditative-card': '_onClickCard',
         },
 
         init: function (parent, options) {
@@ -20,7 +20,7 @@ odoo.define('meditative_cards.card', function (require) {
 
         start: function () {
             this._super.apply(this, arguments);
-            this.flipped = false;
+            this.$el.draggable();
         },
 
         _getRotation: function () {
@@ -30,11 +30,11 @@ odoo.define('meditative_cards.card', function (require) {
 
         _flipCard: function (card) {
             const front = card.children('img.front'), back = card.children('img.back');
+            card.addClass('card-flip-shadow');
             card.children(':last-child').css('opacity', 0.8);
             card.css('width', 0);
-            card.addClass('card-transition-flip');
             setTimeout(() => {
-                card.removeClass('card-transition-flip');
+                card.removeClass('card-flip-shadow');
                 front.css('display') == 'none' ? front.css('display', 'block') : front.css('display', 'none');
                 back.css('display') == 'none' ? back.css('display', 'block') : back.css('display', 'none');
                 card.children(':first-child').css('visibility', 'visible');
