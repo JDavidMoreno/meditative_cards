@@ -7,16 +7,16 @@ odoo.define('meditative_cards.card', function (require) {
     var Card = Widget.extend({
         template: 'cards.Card',
         events: {
-            'dblclick .meditative-card': '_onClickCard',
+            'mouseup .meditative-card': '_onMouseUpCard',
+            'dblclick .meditative-card': '_onDblClickCard'
         },
 
         init: function (parent, options) {
             this.parent = parent;
             this.variant = options.variant;
             this.url = options.url;
-            this.$cardsToInitialise = options.cardsToInitialise;
             this.rotation = this._getRotation();
-            this.zIndex = this.getRandomInt(0, this.$cardsToInitialise);
+            this.zIndex = this.getRandomInt(900, 999);
             this._super.apply(this, arguments);
         },
 
@@ -24,7 +24,12 @@ odoo.define('meditative_cards.card', function (require) {
             this._super.apply(this, arguments);
             // this.$el.draggable();
             this.$card = this.$el.find('.meditative-card');
-            this.$card.draggable();
+            this.$card.draggable({
+                containment: "window",
+                classes: {
+                    "ui-draggable-dragging": "card-dragging"
+                }
+            });
             this.isCardFlipped = false;
             this.originalTopPosition = this.$card.position().top;
             this.originalLeftPosition = this.$card.position().left;
@@ -48,12 +53,12 @@ odoo.define('meditative_cards.card', function (require) {
                 'top': this.originalTopPosition + 'px',
                 'left': this.originalLeftPosition + 'px',
                 'transform': 'rotate(' + this._getRotation() + 'deg)',
-                'z-index': this.getRandomInt(0, this.$cardsToInitialise)
+                'z-index': this.getRandomInt(900, 999)
             });
             setTimeout(() => {
                 this.$card.css({
                     'transition': '', // Just apply the transition for the shuffleling, but remove a moment later
-                })
+                });
             }, 400);
         },
 
@@ -83,14 +88,22 @@ odoo.define('meditative_cards.card', function (require) {
             this.flipped = true;
         },
 
-        _onClickCard: function (e) {
+        _onDblClickCard: function (e) {
             this._flipCard();
-            // this.$el.find('img').css('visibility', 'initial');
-            // this.triggerUp('clickCard', {
-            //     id: e.target.dataset.cardId,
-            //     variant: this.variant
-            // });
         },
+
+        _onMouseUpCard: function (e) {
+            const cardDeck = $('div.cards-block-deck');
+            const cardDeckPosition = {
+                left: cardDeck.offset().left,
+                center: cardDeck.offset().left + cardDeck.width() / 2
+            };
+            if (this.$card.offset().left < cardDeckPosition.left || this.$card.offset().left > cardDeckPosition.center) {
+                this.trigger_up('mouseUpCard', {
+                    card: this.$card
+                });
+            }
+        }
 
     });
 

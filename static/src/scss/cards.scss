@@ -137,7 +137,8 @@
   cursor: pointer;
 }
 
-// TODO: I can catch the event from, and canculate the read the higert z-index at that moment, and then give the current element the higest possible valie for that
-.ui-draggable-dragging {
-  z-index: 100 !important;
+// // TODO: I can catch the event from, and canculate the read the higert z-index at that moment, and then give the current element the higest possible valie for that
+.card-dragging {
+  z-index: 999 !important;
+  box-shadow: 1rem 0 0.8rem 0.4rem rgba(0, 0, 0, 0.15), -0.4rem 0 0.8rem 0.4rem rgba(0, 0, 0, 0.15) !important;
 }

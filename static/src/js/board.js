@@ -25,15 +25,15 @@ odoo.define('meditative_cards.board', function (require) {
             'click #toggle-music': '_onClickToggleMusic',
         },
         custom_events: {
-            clickCard: '_onClickCard'
+            mouseUpCard: '_onMouseUpCard'
         },
 
         init: function () {
             this._super.apply(this, arguments);
             this.cardsToInitialise = 10;
-
             this.cards = [];
             this.messageCards = [];
+            this.cardsRefZIndex = 1;
         },
 
         start: async function () {
@@ -58,8 +58,7 @@ odoo.define('meditative_cards.board', function (require) {
                 for (let i = 1; i <= this.cardsToInitialise; i++) {
                     currentCard = new Card(this, {
                         variant: 'card',
-                        url: `/meditative_cards/static/src/img/cards/${i}.jpg`,
-                        cardsToInitialise: this.cardsToInitialise
+                        url: `/meditative_cards/static/src/img/cards/${i}.jpg`
                     })
                     this.cards.push(currentCard);
                     currentCard.appendTo(this.cardsContainer);
@@ -70,8 +69,7 @@ odoo.define('meditative_cards.board', function (require) {
                 for (let i = 1; i <= this.cardsToInitialise; i++) {
                     currentCard = new Card(this, {
                         variant: 'message',
-                        url: `/meditative_cards/static/src/img/messages/${i}.jpg`,
-                        cardsToInitialise: this.cardsToInitialise
+                        url: `/meditative_cards/static/src/img/messages/${i}.jpg`
                     })
                     this.messageCards.push(currentCard);
                     currentCard.appendTo(this.messagesContainer);
@@ -100,6 +98,11 @@ odoo.define('meditative_cards.board', function (require) {
                 toggleButton.removeClass('fa-volume-up').addClass('fa-volume-off');
                 this.audioObject.pause();
             }
+        },
+
+        _onMouseUpCard: function (e) {
+            e.data.card.css('z-index', this.cardsRefZIndex);
+            this.cardsRefZIndex++;
         },
 
         destroy: function () {
