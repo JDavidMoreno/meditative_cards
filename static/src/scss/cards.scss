@@ -13,7 +13,16 @@
 .cards-container {
     height: 50vh;
     margin: auto;
-    margin-top: 1rem;
+    margin-top: 1vh;
+    margin-bottom: 4vh;
+}
+
+.deck-control {
+  background-color: #ffffff6e;
+  border: 1px solid #ffffff61;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 6vh;
 }
 
 .messages-container {
@@ -41,12 +50,16 @@
     height: 45vh;
     width: calc(45vh / 1.5);
     margin: auto;
+    max-height: 33rem;
+    max-width: 22rem;
   }
 
   &.variant-message {
     height: 8vh;
     width: calc(8vh * 4);
     margin: auto;
+    max-height: 6rem;
+    max-width: 22rem;
   }
 }
 
@@ -77,37 +90,40 @@
     100% {
       transform: rotate(360deg);
     }
-  }
+}
 
-  #shuffle-cards {
-    color: white;
-    font-size: 4vw;
-    cursor: pointer;
-    margin: 1rem;
-  }
+.deck-control-buttons {
+  color: white;
+  font-size: 1rem;
+  margin: 1vh;
+  cursor: pointer;
 
-  #shuffle-cards:hover {
-    color: rgb(218, 218, 218);
-    animation: arrow-rotate 1s infinite;
+  &#shuffle-cards {
+    margin-right: 4vw;
   }
+}
 
-  @keyframes arrow-jump {
-    0%   { opacity: 0;}
-    100% {
-      transform: translateY(10px);
-    }
-  }
+#shuffle-cards:hover {
+  animation: arrow-rotate 1s infinite;
+}
 
-  #expand-more {
-    position: absolute;
-    bottom: -1rem;
-    left: 47vw;
-    color: white;
-    font-size: 7vw;
-    cursor: pointer;
+@keyframes arrow-jump {
+  0%   { opacity: 0;}
+  100% {
+    transform: translateY(10px);
   }
+}
 
-  #expand-more:hover {
-    color: rgb(236, 236, 236);
-    animation: arrow-jump 1s infinite;
-  }
+#expand-more {
+  position: absolute;
+  bottom: -1rem;
+  left: 47vw;
+  color: white;
+  font-size: 7vw;
+  cursor: pointer;
+}
+
+#expand-more:hover {
+  color: rgb(236, 236, 236);
+  animation: arrow-jump 1s infinite;
+}

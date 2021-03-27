@@ -6,13 +6,16 @@
     <t t-name="cards.Board">
         <t t-if="widget.isVerticalScreen">
             <div class="row justify-content-center">
-                <div class="col-3">
-                    <i id="shuffle-cards" class="fa fa-refresh" alt="Shuffle all the cards again." />
+                <div class="col-3 cards-block-deck rounded-top">
+                    <div class="deck-control rounded">
+                        <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" alt="Shuffle all the cards again" />
+                        <i id="move-cards-deck" class="fa fa-th deck-control-buttons" alt="Move the Cards Docker elsewhere" />
+                    </div>
                     <div position="relative" class="cards-container">
-                        <!-- Cards go here inside -->
+                        <!-- Cards go here -->
                     </div>
                     <div position="relative" class="messages-container">
-                        <!-- Messagea will be appended here -->
+                        <!-- Messages will be appended here -->
                     </div>
                 </div>
             </div>
@@ -22,7 +25,7 @@
         </t>
     </t>
 
-    <div t-name="cards.Card" class="card-wrapper" draggable="true">
+    <div t-name="cards.Card" class="card-wrapper">
         <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" t-attf-style="transform: rotate({{ widget.rotation }}deg); z-index: {{ widget.zIndex }}">
             <img class="card-image front" style="display: none;" t-attf-src="{{ widget.url }}" alt="Meditative Card" />
             <img class="card-image back" style="display: block;" t-attf-src="/meditative_cards/static/src/img/{{ widget.variant === 'card' ? 'card-back' : 'message-back' }}.jpg" alt="Meditative Back Card" />
