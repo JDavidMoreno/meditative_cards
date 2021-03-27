@@ -4,26 +4,21 @@
 
     <!-- Widget controlled board component -->
     <div t-name="cards.Board">
-        <t t-if="widget.isVerticalScreen">
-            <i id="toggle-music" class="fa fa-volume-off" alt="Toggle Music" />
-            <div class="row justify-content-center">
-                <div class="col-3 cards-block-deck rounded-top">
-                    <div class="deck-control rounded">
-                        <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" alt="Shuffle all the cards again" />
-                        <i id="move-cards-deck" class="fa fa-th deck-control-buttons" alt="Move the Cards Docker elsewhere" />
-                    </div>
-                    <div position="relative" class="cards-container">
-                        <!-- Cards go here -->
-                    </div>
-                    <div position="relative" class="messages-container">
-                        <!-- Messages will be appended here -->
-                    </div>
+        <i id="toggle-music" class="fa fa-volume-off" alt="Toggle Music" />
+        <div class="row justify-content-center">
+            <div class="col-3 cards-block-deck rounded-top">
+                <div class="deck-control rounded">
+                    <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" alt="Shuffle all the cards again" />
+                    <i id="move-cards-deck" class="fa fa-th deck-control-buttons" alt="Move the Cards Docker elsewhere" />
+                </div>
+                <div position="relative" class="cards-container">
+                    <!-- Cards go here -->
+                </div>
+                <div position="relative" class="messages-container">
+                    <!-- Messages will be appended here -->
                 </div>
             </div>
-        </t>
-        <t t-else="">
-            <p>Nothing for the moment</p>
-        </t>
+        </div>
     </div>
 
     <div t-name="cards.Card" class="card-wrapper">

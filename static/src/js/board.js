@@ -30,15 +30,10 @@ odoo.define('meditative_cards.board', function (require) {
 
         init: function () {
             this._super.apply(this, arguments);
-            this.isVerticalScreen = true; // this must be changed
             this.cardsToInitialise = 10;
 
             this.cards = [];
             this.messageCards = [];
-
-            // if (window.innerHeight >= window.innerWidth) {
-            //     this.isVerticalScreen = true;
-            // }
         },
 
         start: async function () {
@@ -46,7 +41,8 @@ odoo.define('meditative_cards.board', function (require) {
             await this._super(...arguments);
             await this._renderCards();
             this.$el.find('.cards-block-deck').draggable({
-                handle: '#move-cards-deck'
+                handle: '#move-cards-deck',
+                containment: "window"
             });
             this.audioObject = new Audio('/meditative_cards/static/src/assets/delayde-little-spirit.mp3');
             this.audioObject.addEventListener('ended', function() {
