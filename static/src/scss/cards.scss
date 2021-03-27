@@ -31,17 +31,18 @@
   position: relative;
   z-index: 1;
   background-color: white;
-  background-image: url('/meditative_cards/static/src/img/card-back.jpg');
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   border-radius: 0.5rem;
   &.variant-card {
+    background-image: url('/meditative_cards/static/src/img/card-back.jpg');
     height: 45vh;
     width: calc(45vh / 1.5);
     margin: auto;
   }
   &.variant-message {
+    background-image: url('/meditative_cards/static/src/img/message-back.jpg');
     height: 8vh;
     width: calc(8vh * 4);
     margin: auto;
