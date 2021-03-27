@@ -77,20 +77,25 @@ odoo.define('meditative_cards.board', function (require) {
             function suffle(arr) {
                 return arr.sort(() => (Math.random() - 0.5))
             }
+
             // Let's shuffle them twice!
-            let newCardsOrder = this.cards;
-            let newMessageCardsOrder = this.messageCards;
-            for (let i = 0; i < 2; i++) {
-                newCardsOrder = suffle(newCardsOrder)
-                newMessageCardsOrder = suffle(newMessageCardsOrder)
-            }
+            // let newCardsOrder = this.cards;
+            // let newMessageCardsOrder = this.messageCards;
+            // for (let i = 0; i < 2; i++) {
+            //     newCardsOrder = suffle(newCardsOrder)
+            //     newMessageCardsOrder = suffle(newMessageCardsOrder)
+            // }
             let card;
-            for (card of newCardsOrder) {
-                card.appendTo(this.cardsContainer);
+            for (card of this.cards) {
+                card.resetDisplay();
             }
-            for (card of newMessageCardsOrder) {
-                card.appendTo(this.messagesContainer);
-            }
+
+            // for (card of newCardsOrder) {
+            //     card.appendTo(this.cardsContainer);
+            // }
+            // for (card of newMessageCardsOrder) {
+            //     card.appendTo(this.messagesContainer);
+            // }
         },
 
     });
