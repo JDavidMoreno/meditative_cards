@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Create a Interactive Cards Table</h1>
+  <h1>Create an Interactive Cards Table</h1>
   <h4>Will add a new page to your odoo instalaction where users will find a virtual table with card to pick</h4>
   <br>
   <p>
