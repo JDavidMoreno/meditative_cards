@@ -14,7 +14,9 @@ odoo.define('meditative_cards.card', function (require) {
             this.parent = parent;
             this.variant = options.variant;
             this.url = options.url;
+            this.cardsToInitialise = options.cardsToInitialise;
             this.rotation = this._getRotation();
+            this.zIndex = this.getRandomInt(0, this.cardsToInitialise);
             this._super.apply(this, arguments);
         },
 
@@ -33,13 +35,20 @@ odoo.define('meditative_cards.card', function (require) {
             return (parseInt(num) % 2 === 0 ? '+' : '-') + num.toString();
         },
 
+        getRandomInt: function (min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        },
+
         resetDisplay: function () {
             this._flipCard(true);
             this.$el.css({
                 'transition': 'all 0.4s linear',
                 'top': this.originalTopPosition + 'px',
                 'left': this.originalLeftPosition + 'px',
-                'transform': 'rotate(' + this._getRotation() + 'deg)'
+                'transform': 'rotate(' + this._getRotation() + 'deg)',
+                'z-index': this.getRandomInt(0, this.cardsToInitialise)
             });
             setTimeout(() => {
                 this.$el.css({

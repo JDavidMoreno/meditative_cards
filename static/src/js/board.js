@@ -53,7 +53,8 @@ odoo.define('meditative_cards.board', function (require) {
                 for (let i = 1; i <= this.cardsToInitialise; i++) {
                     currentCard = new Card(this, {
                         variant: 'card',
-                        url: `/meditative_cards/static/src/img/cards/${i}.jpg`
+                        url: `/meditative_cards/static/src/img/cards/${i}.jpg`,
+                        cardsToInitialise: this.cardsToInitialise
                     })
                     this.cards.push(currentCard);
                     currentCard.appendTo(this.cardsContainer);
@@ -64,7 +65,8 @@ odoo.define('meditative_cards.board', function (require) {
                 for (let i = 1; i <= this.cardsToInitialise; i++) {
                     currentCard = new Card(this, {
                         variant: 'message',
-                        url: `/meditative_cards/static/src/img/messages/${i}.jpg`
+                        url: `/meditative_cards/static/src/img/messages/${i}.jpg`,
+                        cardsToInitialise: this.cardsToInitialise
                     })
                     this.messageCards.push(currentCard);
                     currentCard.appendTo(this.messagesContainer);
@@ -73,29 +75,13 @@ odoo.define('meditative_cards.board', function (require) {
         },
 
         _onClickShuffle: function (e) {
-            // TODO: Just change the inclination of the card (transition then should apply) and the number of the ward for every widget
-            function suffle(arr) {
-                return arr.sort(() => (Math.random() - 0.5))
-            }
-
-            // Let's shuffle them twice!
-            // let newCardsOrder = this.cards;
-            // let newMessageCardsOrder = this.messageCards;
-            // for (let i = 0; i < 2; i++) {
-            //     newCardsOrder = suffle(newCardsOrder)
-            //     newMessageCardsOrder = suffle(newMessageCardsOrder)
-            // }
             let card;
             for (card of this.cards) {
                 card.resetDisplay();
             }
-
-            // for (card of newCardsOrder) {
-            //     card.appendTo(this.cardsContainer);
-            // }
-            // for (card of newMessageCardsOrder) {
-            //     card.appendTo(this.messagesContainer);
-            // }
+            for (card of this.messageCards) {
+                card.resetDisplay();
+            }
         },
 
     });
