@@ -20,6 +20,7 @@ odoo.define('meditative_cards.card', function (require) {
 
         start: function () {
             this._super.apply(this, arguments);
+            this.flipped = false;
         },
 
         _getRotation: function () {
@@ -27,8 +28,25 @@ odoo.define('meditative_cards.card', function (require) {
             return (parseInt(num) % 2 === 0 ? '+' : '-') + num.toString();
         },
 
+        _flipCard: function (card) {
+            const front = card.children('img.front'), back = card.children('img.back');
+            card.children(':last-child').css('opacity', 0.8);
+            card.css('width', 0);
+            card.addClass('card-transition-flip');
+            setTimeout(() => {
+                card.removeClass('card-transition-flip');
+                front.css('display') == 'none' ? front.css('display', 'block') : front.css('display', 'none');
+                back.css('display') == 'none' ? back.css('display', 'block') : back.css('display', 'none');
+                card.children(':first-child').css('visibility', 'visible');
+                card.css('width', ''); // Remove the width in the element and use the one from the class
+                card.children(':last-child').css('opacity', 0)
+            }, 0.4 * 1000);
+            this.flipped = true;
+        },
+
         _onClickCard: function (e) {
-            this.$el.find('img').css('visibility', 'initial');
+            this._flipCard(this.$el.find('.meditative-card'));
+            // this.$el.find('img').css('visibility', 'initial');
             // this.triggerUp('clickCard', {
             //     id: e.target.dataset.cardId,
             //     variant: this.variant

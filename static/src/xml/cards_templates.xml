@@ -22,9 +22,11 @@
         </t>
     </t>
 
-    <div t-name="cards.Card" class="card-wrapper">
-        <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" draggable="true" t-att-style="'transform: rotate(' + widget.rotation + 'deg);'">
-            <img class="card-image" style="visibility: hidden;" t-attf-src="{{ widget.url }}" alt="Meditative Card" />
+    <div t-name="cards.Card" class="card-wrapper" draggable="true">
+        <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" t-att-style="'transform: rotate(' + widget.rotation + 'deg);'">
+            <img class="card-image front" style="display: none;" t-attf-src="{{ widget.url }}" alt="Meditative Card" />
+            <img class="card-image back" style="display: block;" t-attf-src="/meditative_cards/static/src/img/{{ widget.variant === 'card' ? 'card-back' : 'message-back' }}.jpg" alt="Meditative Back Card" />
+            <div class="card_filter" />
         </div>
     </div>
 
