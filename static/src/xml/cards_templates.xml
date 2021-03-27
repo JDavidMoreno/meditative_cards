@@ -3,8 +3,9 @@
 <templates id="meditative_cards_templates" xml:space="preserve">
 
     <!-- Widget controlled board component -->
-    <t t-name="cards.Board">
+    <div t-name="cards.Board">
         <t t-if="widget.isVerticalScreen">
+            <i id="toggle-music" class="fa fa-volume-off" alt="Toggle Music" />
             <div class="row justify-content-center">
                 <div class="col-3 cards-block-deck rounded-top">
                     <div class="deck-control rounded">
@@ -23,7 +24,7 @@
         <t t-else="">
             <p>Nothing for the moment</p>
         </t>
-    </t>
+    </div>
 
     <div t-name="cards.Card" class="card-wrapper">
         <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" t-attf-style="transform: rotate({{ widget.rotation }}deg); z-index: {{ widget.zIndex }}">

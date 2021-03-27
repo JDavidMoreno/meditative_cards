@@ -22,6 +22,7 @@ odoo.define('meditative_cards.board', function (require) {
         ,
         events: {
             'click #shuffle-cards': '_onClickShuffle',
+            'click #toggle-music': '_onClickToggleMusic',
         },
         custom_events: {
             clickCard: '_onClickCard'
@@ -44,6 +45,14 @@ odoo.define('meditative_cards.board', function (require) {
             this.session = Session;
             await this._super(...arguments);
             await this._renderCards();
+            this.$el.find('.cards-block-deck').draggable({
+                handle: '#move-cards-deck'
+            });
+            this.audioObject = new Audio('/meditative_cards/static/src/assets/delayde-little-spirit.mp3');
+            this.audioObject.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            }, false);
         },
 
         _renderCards: async function () {
@@ -75,6 +84,7 @@ odoo.define('meditative_cards.board', function (require) {
         },
 
         _onClickShuffle: function (e) {
+            e.preventDefault();
             let card;
             for (card of this.cards) {
                 card.resetDisplay();
@@ -83,6 +93,24 @@ odoo.define('meditative_cards.board', function (require) {
                 card.resetDisplay();
             }
         },
+
+        _onClickToggleMusic: function (e) {
+            e.preventDefault();
+            const toggleButton = this.$el.find('#toggle-music');
+            if (toggleButton.hasClass('fa-volume-off')) {
+                toggleButton.removeClass('fa-volume-off').addClass('fa-volume-up');
+                this.audioObject.play();
+            } else {
+                toggleButton.removeClass('fa-volume-up').addClass('fa-volume-off');
+                this.audioObject.pause();
+            }
+        },
+
+        destroy: function () {
+            this.audioObject.pause();
+            delete this.audioObject;
+            return this._super.apply(this, arguments);
+        }
 
     });
 

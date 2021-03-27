@@ -127,3 +127,16 @@
   color: rgb(236, 236, 236);
   animation: arrow-jump 1s infinite;
 }
+
+#toggle-music {
+  position: fixed;
+  left: 2rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+// TODO: I can catch the event from, and canculate the read the higert z-index at that moment, and then give the current element the higest possible valie for that
+.ui-draggable-dragging {
+  z-index: 100 !important;
+}
