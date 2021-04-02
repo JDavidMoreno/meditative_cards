@@ -12,7 +12,7 @@
                 <h3 class="popover-header"></h3><div class="popover-body">Click here to enable music!</div>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center main-card-row" style="margin-bottom: 10rem;">
             <div class="col-3 cards-block-deck rounded-top">
                 <div class="deck-control rounded">
                     <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" title="Shuffle cards" alt="Shuffle all the cards again" />
@@ -25,7 +25,7 @@
                     <!-- Messages will be appended here -->
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
 
     <div t-name="cards.Card" class="card-wrapper">
