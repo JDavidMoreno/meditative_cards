@@ -39,7 +39,7 @@ odoo.define('meditative_cards.board', function (require) {
         start: async function () {
             this.session = Session;
             await this._super(...arguments);
-            await this._loadDeck();
+            this._loadDeck();
             this.$el.find('.cards-block-deck').draggable({
                 handle: '#move-cards-deck',
                 containment: "window"
@@ -51,17 +51,18 @@ odoo.define('meditative_cards.board', function (require) {
             }, false);
         },
 
-        _loadDeck: async function () {
+        _loadDeck: function () {
             this._renderCards();
         },
 
-        _renderCards: async function () {
+        _renderCards: function () {
             let currentCard;
             const cardsContainer = this.$('.cards-container');
             for (let i = 1; i <= this.cardsToInitialise; i++) {
                 currentCard = new Card(this, {
                     variant: 'card',
-                    url: `/meditative_cards/static/src/img/cards/${i}.jpg`
+                    srcFace: `/meditative_cards/static/src/img/cards/${i}.jpg`,
+                    srcBack: `/meditative_cards/static/src/img/card-back.jpg`
                 })
                 this.cards.push(currentCard);
                 currentCard.appendTo(cardsContainer);
@@ -70,7 +71,8 @@ odoo.define('meditative_cards.board', function (require) {
             for (let i = 1; i <= this.cardsToInitialise; i++) {
                 currentCard = new Card(this, {
                     variant: 'message',
-                    url: `/meditative_cards/static/src/img/messages/${i}.jpg`
+                    srcFace: `/meditative_cards/static/src/img/messages/${i}.jpg`,
+                    srcBack: `/meditative_cards/static/src/img/message-back.jpg`
                 })
                 this.messageCards.push(currentCard);
                 currentCard.appendTo(this.messagesContainer);

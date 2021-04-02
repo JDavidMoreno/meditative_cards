@@ -14,7 +14,8 @@ odoo.define('meditative_cards.card', function (require) {
         init: function (parent, options) {
             this.parent = parent;
             this.variant = options.variant;
-            this.url = options.url;
+            this.srcFace = options.srcFace;
+            this.srcBack = options.srcBack;
             this.rotation = this._getRotation();
             this.zIndex = this.getRandomInt(900, 999);
             this._super.apply(this, arguments);
