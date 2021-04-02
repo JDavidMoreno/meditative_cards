@@ -6,7 +6,7 @@
     <div t-name="cards.Board">
         
         <div style="position: relative">
-            <i id="toggle-music" class="fa fa-volume-down"  alt="Toggle Music" />
+            <i id="toggle-music" class="fa fa-volume-down" title="Enable/disable music" alt="Toggle Music" />
             <div id="cards-music-popover" class="popover fade show bs-popover-right" role="tooltip">
                 <div class="arrow" style="top: 0.2rem;"></div>
                 <h3 class="popover-header"></h3><div class="popover-body">Click here to enable music!</div>
@@ -15,8 +15,8 @@
         <div class="row justify-content-center">
             <div class="col-3 cards-block-deck rounded-top">
                 <div class="deck-control rounded">
-                    <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" alt="Shuffle all the cards again" />
-                    <i id="move-cards-deck" class="fa fa-th deck-control-buttons" alt="Move the Cards Docker elsewhere" />
+                    <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" title="Shuffle cards" alt="Shuffle all the cards again" />
+                    <i id="move-cards-deck" class="fa fa-th deck-control-buttons" title="Press and drag from here to move your cards" alt="Move the Cards Docker elsewhere" />
                 </div>
                 <div position="relative" class="cards-container">
                     <!-- Cards go here -->
