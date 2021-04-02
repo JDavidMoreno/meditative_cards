@@ -39,7 +39,7 @@ odoo.define('meditative_cards.board', function (require) {
         start: async function () {
             this.session = Session;
             await this._super(...arguments);
-            await this._renderCards();
+            await this._loadDeck();
             this.$el.find('.cards-block-deck').draggable({
                 handle: '#move-cards-deck',
                 containment: "window"
@@ -51,29 +51,29 @@ odoo.define('meditative_cards.board', function (require) {
             }, false);
         },
 
+        _loadDeck: async function () {
+            this._renderCards();
+        },
+
         _renderCards: async function () {
             let currentCard;
-            if (this.cards.length === 0) {
-                this.cardsContainer = this.$('.cards-container');
-                for (let i = 1; i <= this.cardsToInitialise; i++) {
-                    currentCard = new Card(this, {
-                        variant: 'card',
-                        url: `/meditative_cards/static/src/img/cards/${i}.jpg`
-                    })
-                    this.cards.push(currentCard);
-                    currentCard.appendTo(this.cardsContainer);
-                }
+            const cardsContainer = this.$('.cards-container');
+            for (let i = 1; i <= this.cardsToInitialise; i++) {
+                currentCard = new Card(this, {
+                    variant: 'card',
+                    url: `/meditative_cards/static/src/img/cards/${i}.jpg`
+                })
+                this.cards.push(currentCard);
+                currentCard.appendTo(cardsContainer);
             }
-            if (this.messageCards.length === 0) {
-                this.messagesContainer = this.$('.messages-container');
-                for (let i = 1; i <= this.cardsToInitialise; i++) {
-                    currentCard = new Card(this, {
-                        variant: 'message',
-                        url: `/meditative_cards/static/src/img/messages/${i}.jpg`
-                    })
-                    this.messageCards.push(currentCard);
-                    currentCard.appendTo(this.messagesContainer);
-                }
+            this.messagesContainer = this.$('.messages-container');
+            for (let i = 1; i <= this.cardsToInitialise; i++) {
+                currentCard = new Card(this, {
+                    variant: 'message',
+                    url: `/meditative_cards/static/src/img/messages/${i}.jpg`
+                })
+                this.messageCards.push(currentCard);
+                currentCard.appendTo(this.messagesContainer);
             }
         },
 

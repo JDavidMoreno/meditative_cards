@@ -94,7 +94,7 @@
 }
 
 .deck-control-buttons {
-  color: white;
+  color: #eaeaea;
   font-size: 1rem;
   margin: 1vh;
   cursor: pointer;
@@ -102,6 +102,10 @@
   &#shuffle-cards {
     margin-right: 4vw;
   }
+}
+
+.deck-control-buttons:hover {
+  color: white;
 }
 
 #shuffle-cards:hover {

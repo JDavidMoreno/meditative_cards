@@ -7,7 +7,7 @@
 
     """,
     'author': "David Moreno",
-    'website': "",
+    'website': "https://github.com/JDavidMoreno",
     'category': 'Website',
     'version': '0.1',
     'depends': ['web', 'portal'],
