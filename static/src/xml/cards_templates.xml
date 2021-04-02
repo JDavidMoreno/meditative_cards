@@ -31,7 +31,6 @@
     <div t-name="cards.Card" class="card-wrapper">
         <div t-name="cards.Card" t-att-class="'meditative-card ' + (widget.variant === 'card' ? 'variant-card' : 'variant-message')" t-attf-style="transform: rotate({{ widget.rotation }}deg); z-index: {{ widget.zIndex }}">
             <img class="card-image front" style="display: none;" t-att-src="widget.srcFace" alt=""/>
-            <!-- <img class="card-image back" style="display: block;" t-attf-src="/meditative_cards/static/src/img/{{ widget.variant === 'card' ? 'card-back' : 'message-back' }}.jpg" alt=""/> -->
             <img class="card-image back" style="display: block;" t-att-src="widget.srcBack" alt=""/>
             <div class="card_filter" />
         </div>

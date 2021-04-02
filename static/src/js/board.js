@@ -52,11 +52,11 @@ odoo.define('meditative_cards.board', function (require) {
             }, false);
         },
 
-        _loadDeck: function () {
+        _loadDeck: async function () {
             this._renderCards();
         },
 
-        _renderCards: function () {
+        _renderCards: async function () {
             let currentCard;
             const cardsContainer = this.$('.cards-container');
             for (let i = 1; i <= this.cardsToInitialise; i++) {
