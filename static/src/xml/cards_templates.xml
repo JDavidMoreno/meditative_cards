@@ -4,7 +4,14 @@
 
     <!-- Widget controlled board component -->
     <div t-name="cards.Board">
-        <i id="toggle-music" class="fa fa-volume-off" alt="Toggle Music" />
+        
+        <div style="position: relative">
+            <i id="toggle-music" class="fa fa-volume-down"  alt="Toggle Music" />
+            <div id="cards-music-popover" class="popover fade show bs-popover-right" role="tooltip">
+                <div class="arrow" style="top: 0.2rem;"></div>
+                <h3 class="popover-header"></h3><div class="popover-body">Click here to enable music!</div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-3 cards-block-deck rounded-top">
                 <div class="deck-control rounded">

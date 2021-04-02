@@ -146,3 +146,19 @@
   z-index: 999 !important;
   box-shadow: 1rem 0 0.8rem 0.4rem rgba(0, 0, 0, 0.15), -0.4rem 0 0.8rem 0.4rem rgba(0, 0, 0, 0.15) !important;
 }
+
+@keyframes music-tooltip {
+  10% {}
+  80% {
+    transform: translate(0.4rem, 0);
+  }
+  10% {}
+}
+
+#cards-music-popover {
+  cursor: pointer;
+  position: fixed;
+  top: initial !important;
+  left: 4rem;
+  animation: music-tooltip 1.5s infinite;
+}

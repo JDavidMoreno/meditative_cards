@@ -23,6 +23,7 @@ odoo.define('meditative_cards.board', function (require) {
         events: {
             'click #shuffle-cards': '_onClickShuffle',
             'click #toggle-music': '_onClickToggleMusic',
+            'click #cards-music-popover': '_onClickTooltipMusic',
         },
         custom_events: {
             mouseUpCard: '_onMouseUpCard'
@@ -91,15 +92,19 @@ odoo.define('meditative_cards.board', function (require) {
         },
 
         _onClickToggleMusic: function (e) {
-            e.preventDefault();
-            const toggleButton = this.$el.find('#toggle-music');
-            if (toggleButton.hasClass('fa-volume-off')) {
-                toggleButton.removeClass('fa-volume-off').addClass('fa-volume-up');
+            const toggleButton = this.$(e.currentTarget);
+            this.$el.find('#cards-music-popover').removeClass('show');
+            if (toggleButton.hasClass('fa-volume-down')) {
+                toggleButton.removeClass('fa-volume-down').addClass('fa-volume-up');
                 this.audioObject.play();
             } else {
-                toggleButton.removeClass('fa-volume-up').addClass('fa-volume-off');
+                toggleButton.removeClass('fa-volume-up').addClass('fa-volume-down');
                 this.audioObject.pause();
             }
+        },
+
+        _onClickTooltipMusic: function (e) {
+            this.$(e.currentTarget).removeClass('show');
         },
 
         _onMouseUpCard: function (e) {
