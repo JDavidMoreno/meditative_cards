@@ -31,7 +31,7 @@ odoo.define('meditative_cards.board', function (require) {
             this._super.apply(this, arguments);
             this.cardsToInitialise = 10;
             this.cards = [];
-            this.messageCards = [];
+            this.messages = [];
             this.cardsRefZIndex = 1;
         },
 
@@ -73,7 +73,7 @@ odoo.define('meditative_cards.board', function (require) {
                     srcFace: `/meditative_cards/static/src/img/messages/${i}.jpg`,
                     srcBack: `/meditative_cards/static/src/img/message-back.jpg`
                 })
-                this.messageCards.push(currentCard);
+                this.messages.push(currentCard);
                 currentCard.appendTo(this.messagesContainer);
             }
         },
@@ -84,7 +84,7 @@ odoo.define('meditative_cards.board', function (require) {
             for (card of this.cards) {
                 card.resetDisplay();
             }
-            for (card of this.messageCards) {
+            for (card of this.messages) {
                 card.resetDisplay();
             }
         },
