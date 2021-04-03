@@ -1,12 +1,10 @@
 odoo.define('meditative_cards.board', function (require) {
     "use strict";
 
-    // var AbstractAction = require('web.AbstractAction');
     var Widget = require('web.Widget');
     var publicWidget = require('web.public.widget');
     // var core = require('web.core');
     var Session = require('web.session');
-    // var QWeb = core.qweb;
 
     var Card = require('meditative_cards.card');
 
@@ -40,6 +38,8 @@ odoo.define('meditative_cards.board', function (require) {
         start: async function () {
             this.session = Session;
             await this._super(...arguments);
+            this.cardsContainer = this.$('.cards-container');
+            this.messagesContainer = this.$('.messages-container');
             this._loadDeck();
             this.$el.find('.cards-block-deck').draggable({
                 handle: '#move-cards-deck',
@@ -58,7 +58,6 @@ odoo.define('meditative_cards.board', function (require) {
 
         _renderCards: async function () {
             let currentCard;
-            const cardsContainer = this.$('.cards-container');
             for (let i = 1; i <= this.cardsToInitialise; i++) {
                 currentCard = new Card(this, {
                     variant: 'card',
@@ -66,9 +65,8 @@ odoo.define('meditative_cards.board', function (require) {
                     srcBack: `/meditative_cards/static/src/img/card-back.jpg`
                 })
                 this.cards.push(currentCard);
-                currentCard.appendTo(cardsContainer);
+                currentCard.appendTo(this.cardsContainer);
             }
-            this.messagesContainer = this.$('.messages-container');
             for (let i = 1; i <= this.cardsToInitialise; i++) {
                 currentCard = new Card(this, {
                     variant: 'message',
