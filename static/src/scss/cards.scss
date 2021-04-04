@@ -1,4 +1,7 @@
-
+$card-height: 45vh;
+$card-width: $card-height / 1.5;
+$message-height: 8vh;
+$message-width: $message-height * 4;
 
 #cards-board {
     height: 100vh;
@@ -52,16 +55,16 @@
   transition: width 0.4s linear;
 
   &.variant-card {
-    height: 45vh;
-    width: calc(45vh / 1.5);
+    height: $card-height;
+    width: $card-width;
     margin: auto;
     max-height: 33rem;
     max-width: 22rem;
   }
 
   &.variant-message {
-    height: 8vh;
-    width: calc(8vh * 4);
+    height: $message-height;
+    width: $message-width;
     margin: auto;
     max-height: 6rem;
     max-width: 22rem;
@@ -102,10 +105,15 @@
   font-size: 1rem;
   margin: 1vh;
   cursor: pointer;
+  transition: font-size 0.4s linear;
 
   &#shuffle-cards {
     margin-right: 4vw;
   }
+}
+
+.deck-control-buttons:hover {
+  font-size: 1.5rem;
 }
 
 .deck-control-buttons:hover {

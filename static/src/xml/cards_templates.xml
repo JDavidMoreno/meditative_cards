@@ -16,9 +16,13 @@
             <div class="col-3 cards-block-deck rounded-top">
                 <div class="deck-control rounded">
                     <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" title="Shuffle cards" alt="Shuffle all the cards again" />
-                    <i id="move-cards-deck" class="fa fa-th deck-control-buttons" title="Press and drag from here to move your cards" alt="Move the Cards Docker elsewhere" />
+                    <i id="move-cards-deck" class="fa fa-th deck-control-buttons" title="Drag from here to move the deck" alt="Move the Cards Docker elsewhere" />
                 </div>
                 <div position="relative" class="cards-container">
+                    <!-- This spinner will appear the first time the page load. Will be re-appendned again everytime the deck is changing -->
+                    <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
                     <!-- Cards go here -->
                 </div>
                 <div position="relative" class="messages-container">
