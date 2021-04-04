@@ -4,7 +4,7 @@
 
     <!-- Widget controlled board component -->
     <div t-name="cards.Board">
-        
+        <div class="oe_structure"/>
         <div style="position: relative">
             <i id="toggle-music" class="fa fa-volume-down" title="Enable/disable music" alt="Toggle Music" />
             <div id="cards-music-popover" class="popover fade show bs-popover-right" role="tooltip">
@@ -12,7 +12,7 @@
                 <h3 class="popover-header"></h3><div class="popover-body">Click here to enable music!</div>
             </div>
         </div>
-        <div class="row justify-content-center main-card-row" style="margin-bottom: 10rem;">
+        <div class="row justify-content-center main-card-row m-5" style="margin-bottom: 10rem;">
             <div class="col-3 cards-block-deck rounded-top">
                 <div class="deck-control rounded">
                     <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" title="Shuffle cards" alt="Shuffle all the cards again" />
@@ -29,7 +29,8 @@
                     <!-- Messages will be appended here -->
                 </div>
             </div>
-        </div>        
+        </div>
+        <div class="oe_structure"/>        
     </div>
 
     <div t-name="cards.Card" class="card-wrapper">
