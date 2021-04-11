@@ -69,7 +69,7 @@ odoo.define('meditative_cards.card', function (require) {
             }
             const front = this.$card.children('img.front'), back = this.$card.children('img.back');
             this.$card.addClass('card-flip-shadow');
-            this.$card.children(':last-child').css('opacity', 0.8);
+            this.$card.children('.card_filter').css('opacity', 0.8);
             this.$card.css('width', 0);
             setTimeout(() => {
                 this.$card.removeClass('card-flip-shadow');
@@ -84,7 +84,7 @@ odoo.define('meditative_cards.card', function (require) {
                 }
                 this.$card.children(':first-child').css('visibility', 'visible');
                 this.$card.css('width', ''); // Remove the width in the element and use the one from the class
-                this.$card.children(':last-child').css('opacity', 0)
+                this.$card.children('.card_filter').css('opacity', 0)
             }, 0.4 * 1000);
             this.flipped = true;
         },
