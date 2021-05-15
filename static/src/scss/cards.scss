@@ -8,8 +8,6 @@ $card-width: $card-height / 1.5;
 $message-height: 8vh;
 $message-width: $message-height * 4;
 
-
-
 #cards-board {
     min-height: 100vh;
     width: 100%;
@@ -53,8 +51,6 @@ $message-width: $message-height * 4;
   margin: auto;
   margin-bottom: 6vh;
 }
-
-
 
 .meditative-card {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
@@ -115,7 +111,7 @@ $message-width: $message-height * 4;
 
 .deck-control-buttons {
   color: #eaeaea;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 1vh;
   cursor: pointer;
   transition: font-size 0.4s linear;
@@ -123,10 +119,6 @@ $message-width: $message-height * 4;
   &#shuffle-cards {
     margin-right: 4vw;
   }
-}
-
-.deck-control-buttons:hover {
-  font-size: 1.5rem;
 }
 
 .deck-control-buttons:hover {
@@ -160,10 +152,11 @@ $message-width: $message-height * 4;
 
 #toggle-music {
   position: fixed;
-  left: 2rem;
+  left: 1rem;
   font-size: 2rem;
   color: white;
   cursor: pointer;
+  padding: 1rem;
 }
 
 // // TODO: I can catch the event from, and canculate the read the higert z-index at that moment, and then give the current element the higest possible valie for that

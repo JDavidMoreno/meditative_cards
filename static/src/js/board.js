@@ -102,7 +102,7 @@ odoo.define('meditative_cards.board', function (require) {
         },
 
         _onClickTooltipMusic: function (e) {
-            this.$(e.currentTarget).removeClass('show');
+            this.$(e.currentTarget).removeClass('show').addClass('d-none');
         },
 
         _onMouseUpCard: function (e) {
