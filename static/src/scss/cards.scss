@@ -20,11 +20,25 @@ $message-width: $message-height * 4;
     overflow: hidden;
 }
 
+.card-wrapper {
+  width: 100%;
+  position: absolute;
+}
+
 .cards-container {
     min-height: 50vh;
+    height: $sm-card-height;
+    max-height: 33rem;
     margin: auto;
     margin-top: 1vh;
     margin-bottom: 4vh;
+}
+
+.messages-container {
+  // height: 20%;
+  margin: auto;
+  height: $sm-message-height;
+  max-height: 6rem;
 }
 
 .main-card-row {
@@ -40,14 +54,7 @@ $message-width: $message-height * 4;
   margin-bottom: 6vh;
 }
 
-.messages-container {
-  height: 20%;
-  margin: auto;
-}
 
-.card-wrapper {
-  width: 100%;
-}
 
 .meditative-card {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
@@ -194,10 +201,6 @@ $message-width: $message-height * 4;
       height: $message-height;
       width: $message-width;
     }
-  }
-
-  .card-wrapper {
-    position: absolute;
   }
 
 }
