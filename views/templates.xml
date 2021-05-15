@@ -4,7 +4,7 @@
     <!-- Base board element -->
     <template id="cards_board" name="Cards Board">
         <t t-call="website.layout">
-            <div id="cards-board" class="container-fluid" />
+            <div id="cards-board" class="container-fluid p-1 p-md-5" />
         </t>
     </template>
 

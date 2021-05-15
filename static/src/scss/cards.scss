@@ -1,7 +1,14 @@
+$sm-card-height: 63vh;
+$sm-card-width: $sm-card-height / 1.5;
+$sm-message-height: 11.2vh;
+$sm-message-width: $sm-message-height * 4;
+
 $card-height: 45vh;
 $card-width: $card-height / 1.5;
 $message-height: 8vh;
 $message-width: $message-height * 4;
+
+
 
 #cards-board {
     min-height: 100vh;
@@ -9,7 +16,6 @@ $message-width: $message-height * 4;
     background-position: center;
     background-size: cover;
     background-image: url('/meditative_cards/static/src/img/table.jpg');
-    padding: 1.5rem;
     text-align: center;
     overflow: hidden;
 }
@@ -40,7 +46,6 @@ $message-width: $message-height * 4;
 }
 
 .card-wrapper {
-  position: absolute;
   width: 100%;
 }
 
@@ -56,16 +61,16 @@ $message-width: $message-height * 4;
   transition: width 0.4s linear;
 
   &.variant-card {
-    height: $card-height;
-    width: $card-width;
+    height: $sm-card-height;
+    width: $sm-card-width;
     margin: auto;
     max-height: 33rem;
     max-width: 22rem;
   }
 
   &.variant-message {
-    height: $message-height;
-    width: $message-width;
+    height: $sm-message-height;
+    width: $sm-message-width;
     margin: auto;
     max-height: 6rem;
     max-width: 22rem;
@@ -174,4 +179,25 @@ $message-width: $message-height * 4;
   top: initial !important;
   left: 4rem;
   animation: music-tooltip 1.5s infinite;
+}
+
+@media (min-width: 768px) {
+
+  .meditative-card {
+
+    &.variant-card {
+      height: $card-height;
+      width: $card-width;
+    }
+
+    &.variant-message {
+      height: $message-height;
+      width: $message-width;
+    }
+  }
+
+  .card-wrapper {
+    position: absolute;
+  }
+
 }
