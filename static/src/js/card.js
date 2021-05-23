@@ -8,7 +8,8 @@ odoo.define('meditative_cards.card', function (require) {
         template: 'cards.Card',
         events: {
             'mouseup .meditative-card': '_onMouseUpCard',
-            'dblclick .meditative-card': '_onDblClickCard'
+            'dblclick .meditative-card': '_onDblClickCard',
+            'touchstart .meditative-card': '_onDblClickCard'
         },
 
         init: function (parent, options) {
@@ -23,10 +24,9 @@ odoo.define('meditative_cards.card', function (require) {
 
         start: function () {
             this._super.apply(this, arguments);
-            // this.$el.draggable();
             this.$card = this.$el.find('.meditative-card');
             this.$card.draggable({
-                containment: "window",
+                containment: "body",
                 classes: {
                     "ui-draggable-dragging": "card-dragging"
                 }
@@ -34,6 +34,7 @@ odoo.define('meditative_cards.card', function (require) {
             this.isCardFlipped = false;
             this.originalTopPosition = this.$card.position().top;
             this.originalLeftPosition = this.$card.position().left;
+            this.lastTouchEvent = null;
         },
 
         _getRotation: function () {
@@ -90,7 +91,11 @@ odoo.define('meditative_cards.card', function (require) {
         },
 
         _onDblClickCard: function (e) {
-            this._flipCard();
+            const currentMoment = new Date();
+            if (e.type == 'dblclick' || this.lastTouchEvent && ((currentMoment - this.lastTouchEvent) < 500)) {
+                this._flipCard();
+            }
+            this.lastTouchEvent = currentMoment;
         },
 
         _onMouseUpCard: function (e) {

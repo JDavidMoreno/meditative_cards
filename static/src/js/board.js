@@ -43,7 +43,7 @@ odoo.define('meditative_cards.board', function (require) {
             this._loadDeck();
             this.$el.find('.cards-block-deck').draggable({
                 handle: '#move-cards-deck',
-                containment: "window"
+                containment: "body"
             });
             this.audioObject = new Audio('/meditative_cards/static/src/assets/delayde-little-spirit.mp3');
             this.audioObject.addEventListener('ended', function() {

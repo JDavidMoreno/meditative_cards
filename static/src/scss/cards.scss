@@ -33,7 +33,6 @@ $message-width: $message-height * 4;
 }
 
 .messages-container {
-  // height: 20%;
   margin: auto;
   height: $sm-message-height;
   max-height: 6rem;
@@ -177,11 +176,12 @@ $message-width: $message-height * 4;
   cursor: pointer;
   position: fixed;
   top: initial !important;
-  left: 4rem;
+  left: 3rem;
   animation: music-tooltip 1.5s infinite;
+  margin: 1rem
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 
   .meditative-card {
 
@@ -194,6 +194,14 @@ $message-width: $message-height * 4;
       height: $message-height;
       width: $message-width;
     }
+  }
+
+  .cards-container {
+    height: $card-height;
+  }
+
+  .messages-container {
+    height: $message-height;
   }
 
 }
