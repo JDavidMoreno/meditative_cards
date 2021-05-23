@@ -67,9 +67,13 @@ odoo.define('meditative_cards.board', function (require) {
             // This is funny, but seems to be like a small delay of time between triggering the orientationChange and the change in the values for window.innherWidth and window.innerHeight
             setTimeout(() => {
                 console.log(window.innerWidth, window.innerHeight);
-                if (window.innerWidth >= window.innerHeight && (($("nav").height() * 4) < window.innerHeight )) {
+                if (window.innerWidth >= window.innerHeight) {
                     this.deckHandDraggable.removeClass("col-12").addClass("col-sm-4");
-                    this._freeDeckHandler();
+                    if (($("nav").height() * 4) < window.innerHeight ) {
+                        this._freeDeckHandler();
+                    } else {
+                        this._limitDeckHandler();
+                    }
                 } else {
                     this.deckHandDraggable.removeClass("col-sm-4").addClass("col-12");
                     this._limitDeckHandler();
