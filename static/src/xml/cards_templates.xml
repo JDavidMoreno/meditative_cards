@@ -14,7 +14,7 @@
         </div>
         <div class="row justify-content-center main-card-row m-1 m-md-5" style="margin-bottom: 10rem;">
             <div class="col-12 col-lg-4 cards-block-deck rounded-top">
-                <div class="deck-control rounded">
+                <div class="deck-control rounded shadow">
                     <i id="shuffle-cards" class="fa fa-refresh deck-control-buttons" title="Shuffle cards" alt="Shuffle all the cards again" />
                     <i id="move-cards-deck" class="fa fa-hand-paper-o deck-control-buttons" title="Drag from here to move the deck" alt="Move the Cards Docker elsewhere" />
                 </div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="oe_structure"/>        
+        <div class="oe_structure"/>
     </div>
 
     <div t-name="cards.Card" class="card-wrapper">

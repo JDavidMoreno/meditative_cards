@@ -41,15 +41,40 @@ odoo.define('meditative_cards.board', function (require) {
             this.cardsContainer = this.$('.cards-container');
             this.messagesContainer = this.$('.messages-container');
             this._loadDeck();
-            this.$el.find('.cards-block-deck').draggable({
+            this.deckHandDraggable = this.$el.find('.cards-block-deck');
+            this.deckHandDraggable.draggable({
                 handle: '#move-cards-deck',
                 containment: "body"
             });
+            if (window.innerWidth >= window.innerHeight && (($("nav").height() * 4) < window.innerHeight)) {
+                this._freeDeckHandler();
+            } else {
+                this._limitDeckHandler();
+            }
+            window.addEventListener("orientationchange", this._onOrientationChange.bind(this));
             this.audioObject = new Audio('/meditative_cards/static/src/assets/delayde-little-spirit.mp3');
             this.audioObject.addEventListener('ended', function() {
                 this.currentTime = 0;
                 this.play();
             }, false);
+        },
+
+        _freeDeckHandler: function () {
+            this.deckHandDraggable.draggable("option", "axis", false);
+            this.isDeckHandLimited = false;
+        },
+
+        _limitDeckHandler: function () {
+            this.deckHandDraggable.draggable("option", "axis", "x");
+            this.isDeckHandLimited = true;
+        },
+
+        _onOrientationChange: function () {
+            if (this.isDeckHandLimited && window.innerWidth >= window.innerHeight && (($("nav").height() * 4) < window.innerHeight )) {
+                this._freeDeckHandler();
+            } else {
+                this._limitDeckHandler();
+            }
         },
 
         _loadDeck: async function () {
